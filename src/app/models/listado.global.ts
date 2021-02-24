@@ -7,7 +7,8 @@ export let aspectos_aatrox = [
     l: false,
     o: true,
     po: false,
-    b: false
+    b: false,
+    idc: 1
   },
   {
     i: "",
@@ -17,7 +18,8 @@ export let aspectos_aatrox = [
     l: false,
     o: true,
     po: true,
-    b: false
+    b: false,
+    idc: 1
   },
   {
     i: "",
@@ -27,7 +29,8 @@ export let aspectos_aatrox = [
     l: false,
     o: true,
     po: true,
-    b: false
+    b: false,
+    idc: 1
   },
   {
     i: "",
@@ -37,7 +40,8 @@ export let aspectos_aatrox = [
     l: false,
     o: true,
     po: false,
-    b: false
+    b: false,
+    idc: 1
   },
   {
     i: "",
@@ -47,7 +51,8 @@ export let aspectos_aatrox = [
     l: false,
     o: false,
     po: false,
-    b: false
+    b: false,
+    idc: 1
   },
   {
     i: "",
@@ -57,7 +62,8 @@ export let aspectos_aatrox = [
     l: false,
     o: true,
     po: false,
-    b: false
+    b: false,
+    idc: 1
   },
   {
     i: "",
@@ -67,11 +73,23 @@ export let aspectos_aatrox = [
     l: false,
     o: false,
     po: false,
-    b: false
+    b: false,
+    idc: 1
   }
 ];
 
-export const LISTADO_ASPECTOS = [
+//generalizacion de aspectos_aatrox para todos los aspectos
+export let LISTADO_ASPECTOS = [];
+
+//no se importa
+export const LISTADO_NOMBRE_ASPECTOS = [
+  "Aatrox Luna de Sangre",
+  "Aatrox Justiciero",
+  "Aatrox Mecha",
+  "Aatrox Odisea",
+  "Aatrox Luna de Sangre Edición Prestigiosa",
+  "Aatrox Cazador Marino",
+  "Aatrox Victorioso",
   "Ahri Academia",
   "Ahri de Arcadia",
   "Ahri Retadora",

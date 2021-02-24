@@ -7,6 +7,7 @@ export class Aspecto {
   obtenible: boolean;
   posesion: boolean;
   botin: boolean;
+  id_campeon: number;
 
   constructor(
     i: string,
@@ -16,7 +17,8 @@ export class Aspecto {
     l: boolean,
     o: boolean,
     po: boolean,
-    b: boolean
+    b: boolean,
+    idc: number
   ) {
     this.imagen = i;
     this.nombre_aspecto = na;
@@ -26,14 +28,17 @@ export class Aspecto {
     this.obtenible = o;
     this.posesion = po;
     this.botin = b;
+    this.id_campeon = idc;
   }
 }
 
 export class Campeon {
+  id: number;
   nombre: string;
   aspectos: Array<Aspecto>;
 
-  constructor(n: string, a: Array<Aspecto>) {
+  constructor(idc: number, n: string, a: Array<Aspecto>) {
+    this.id = idc;
     this.nombre = n;
     this.aspectos = a;
   }

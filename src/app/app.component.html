@@ -1,59 +1,51 @@
-<h2>{{titulo}}</h2>
-
 <div class="row">
-	<div class="col col-lg-2">
-		1 of
-		3lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll3lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
-	</div>
-	<div class="col-md-auto">
-		Variable width
-		content3llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll3llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
-	</div>
-	<div class="col col-lg-2">
-		3 of
-		33lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll3lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
-	</div>
+	<div class="col-md-8">
+		<h2>{{titulo}}</h2>
+		<div *ngFor="let campeon of campeones; let i=index">
+			<h4> {{i+1}}.- {{campeon.nombre}} </h4>
+			<!--{{campeones[i].nombre}} - {{campeones[i].aspectos[0].nombre_aspecto}}-->
+			<table border="1">
+				<thead>
+					<tr>
+						<th width="30">N°</th>
+						<th width="250">Nombre aspecto</th>
+						<th width="80">Tipo</th>
+						<th width="60">Precio</th>
+						<th>Legado?</th>
+						<th>Obtenible?</th>
+						<th>Posesión?</th>
+						<th>Botin?</th>
+					</tr>
+				</thead>
+				<tbody *ngFor="let aspecto of campeon.aspectos; let j=index">
+					<tr>
+						<td>{{j+1}}</td>
+						<td>{{aspecto.nombre_aspecto}}</td>
+						<td>{{aspecto.tipo}}</td>
+						<td>{{aspecto.precio}}</td>
+						<td>
+							<b *ngIf="aspecto.legado">Si</b>
+							<b *ngIf="!aspecto.legado">No</b>
+						</td>
+						<td>
+							<b *ngIf="aspecto.obtenible">Si</b>
+							<b *ngIf="!aspecto.obtenible">No</b>
+						</td>
+						<td>
+							<b *ngIf="aspecto.posesion">Si</b>
+							<b *ngIf="!aspecto.posesion">No</b>
+						<td>
+							<b *ngIf="aspecto.botin">Si</b>
+							<b *ngIf="!aspecto.botin">No</b>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
 </div>
+		</div>
+		<div class="col-md-4">
+			<h2>Resumen de aspectos</h2>
 
-<div *ngFor="let campeon of campeones; let i=index">
-	{{i+1}}.- {{campeon.nombre}}
-	<!--{{campeones[i].nombre}} - {{campeones[i].aspectos[0].nombre_aspecto}}-->
-	<table border="1">
-		<thead>
-			<tr>
-				<th width="30">N°</th>
-				<th width="250">Nombre aspecto</th>
-				<th width="80">Tipo</th>
-				<th width="60">Precio</th>
-				<th>Legado?</th>
-				<th>Obtenible?</th>
-				<th>Posesión?</th>
-				<th>Botin?</th>
-			</tr>
-		</thead>
-		<tbody *ngFor="let aspecto of campeon.aspectos; let j=index">
-			<tr>
-				<td>{{j+1}}</td>
-				<td>{{aspecto.nombre_aspecto}}</td>
-				<td>{{aspecto.tipo}}</td>
-				<td>{{aspecto.precio}}</td>
-				<td>
-					<b *ngIf="aspecto.legado">Si</b>
-					<b *ngIf="!aspecto.legado">No</b>
-				</td>
-				<td>
-					<b *ngIf="aspecto.obtenible">Si</b>
-					<b *ngIf="!aspecto.obtenible">No</b>
-				</td>
-				<td>
-					<b *ngIf="aspecto.posesion">Si</b>
-					<b *ngIf="!aspecto.posesion">No</b>
-				<td>
-					<b *ngIf="aspecto.botin">Si</b>
-					<b *ngIf="!aspecto.botin">No</b>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<br />
-</div>
+		</div>
+	</div>
