@@ -1,5 +1,5 @@
 import { Component, VERSION } from "@angular/core";
-import { LISTADO_CAMPEONES } from "./models/listado.global";
+import { aspectos_aatrox, LISTADO_CAMPEONES } from "./models/listado.global";
 import { LISTADO_ASPECTOS } from "./models/listado.global";
 import { Aspecto } from "./models/campeon.model";
 import { Campeon } from "./models/campeon.model";
@@ -14,13 +14,23 @@ export class AppComponent {
   public listado: string[] = LISTADO_CAMPEONES;
   public listado_aspectos: string[] = LISTADO_ASPECTOS;
 
+  public de_aatrox = aspectos_aatrox;
+
+  //array de campeones
   public campeones: Array<Campeon> = [
     /*{ nombre: "Aatrox", aspectos: new Array<Aspecto>() }*/
+    /*campeones[0],campeones[1],...,campeones[N]*/
   ];
 
   ngOnInit() {
     console.log("hola oninit");
+    //carga nombres de los campeones
     this.cargaDatos();
+
+    //cargar datos de aatrox
+    this.cargaAatrox(this.de_aatrox);
+
+    //funcion de prueba
     this.nuevoAspecto(
       "Sin imagen",
       "Hugo Odisea",
@@ -49,6 +59,27 @@ export class AppComponent {
       }*/
     }
     //this.campeones[0].aspectos[0].nombre_aspecto = "coscu";
+  }
+
+  cargaAatrox(skins: any) {
+    //recorrer los aspectos de aatrox
+    console.log("skins.length: ", skins.length);
+    for (let i = 0; i < skins.length; i++) {
+      let nasp = new Aspecto(
+        skins[i].i,
+        skins[i].na,
+        skins[i].t,
+        skins[i].p,
+        skins[i].l,
+        skins[i].o,
+        skins[i].po,
+        skins[i].b
+      );
+      console.log("cada aspecto: ", nasp);
+      //asignar cada atributo del aspecto al nuevo aspecto del subarray
+      this.campeones[0].aspectos[i] = nasp;
+      console.log("que muestra?: ", this.campeones[0].aspectos);
+    }
   }
 
   nuevoAspecto(i, na, t, p, l, o, po, b) {

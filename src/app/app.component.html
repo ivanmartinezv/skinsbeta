@@ -1,32 +1,44 @@
 <h2>{{titulo}}</h2>
 
-<div *ngFor="let campeon of this.campeones; let i=index">
-  {{i+1}}.- {{campeones[i].nombre}}
-  <table border="1">
-    <thead>
-      <tr>
-        <th width="30">N°</th>
-        <th width="250">Nombre aspecto</th>
-        <th width="80">Tipo</th>
-        <th width="60">Precio</th>
-        <th>Legado?</th>
-        <th>Obtenible?</th>
-        <th>Posesión?</th>
-        <th>Botin?</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let aspecto of campeon.aspectos; let j=index">
-      <tr>
-        <td>{{j+1}}</td>
-        <td>{{aspecto[j].nombre_aspecto}}</td>
-        <td>{{aspecto[j].tipo}}</td>
-        <td>{{aspecto[j].precio}}</td>
-        <td>{{aspecto[j].legado}}</td>
-        <td>{{aspecto[j].obtenible}}</td>
-        <td>{{aspecto[j].posesion}}</td>
-        <td>{{aspecto[j].botin}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <br />
+<div *ngFor="let campeon of campeones; let i=index">
+	{{i+1}}.- {{campeon.nombre}}
+	<!--{{campeones[i].nombre}} - {{campeones[i].aspectos[0].nombre_aspecto}}-->
+	<table border="1">
+		<thead>
+			<tr>
+				<th width="30">N°</th>
+				<th width="250">Nombre aspecto</th>
+				<th width="80">Tipo</th>
+				<th width="60">Precio</th>
+				<th>Legado?</th>
+				<th>Obtenible?</th>
+				<th>Posesión?</th>
+				<th>Botin?</th>
+			</tr>
+		</thead>
+		<tbody *ngFor="let aspecto of campeon.aspectos; let j=index">
+			<tr>
+				<td>{{j+1}}</td>
+				<td>{{aspecto.nombre_aspecto}}</td>
+				<td>{{aspecto.tipo}}</td>
+				<td>{{aspecto.precio}}</td>
+				<td>
+					<b *ngIf="aspecto.legado">Si</b>
+					<b *ngIf="!aspecto.legado">No</b>
+				</td>
+				<td>
+					<b *ngIf="aspecto.obtenible">Si</b>
+					<b *ngIf="!aspecto.obtenible">No</b>
+				</td>
+				<td>
+					<b *ngIf="aspecto.posesion">Si</b>
+					<b *ngIf="!aspecto.posesion">No</b>
+				<td>
+					<b *ngIf="aspecto.botin">Si</b>
+					<b *ngIf="!aspecto.botin">No</b>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
 </div>

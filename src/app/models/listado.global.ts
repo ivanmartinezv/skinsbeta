@@ -9,12 +9,66 @@ export let aspectos_aatrox = [
     po: false,
     b: false
   },
-  { na: "Aatrox Justiciero" },
-  { na: "Aatrox Mecha" },
-  { na: "Aatrox Odisea" },
-  { na: "Aatrox Luna de Sangre Edición Prestigiosa" },
-  { na: "Aatrox Cazador Marino" },
-  { na: "Aatrox Victorioso" }
+  {
+    i: "",
+    na: "Aatrox Justiciero",
+    t: "Barata",
+    p: 975,
+    l: false,
+    o: true,
+    po: true,
+    b: false
+  },
+  {
+    i: "",
+    na: "Aatrox Mecha",
+    t: "Epica",
+    p: 1350,
+    l: false,
+    o: true,
+    po: true,
+    b: false
+  },
+  {
+    i: "",
+    na: "Aatrox Odisea",
+    t: "Epica",
+    p: 1350,
+    l: false,
+    o: true,
+    po: false,
+    b: false
+  },
+  {
+    i: "",
+    na: "Aatrox Luna de Sangre Edición Prestigiosa",
+    t: "Prestigiosa",
+    p: 0,
+    l: false,
+    o: false,
+    po: false,
+    b: false
+  },
+  {
+    i: "",
+    na: "Aatrox Cazador Marino",
+    t: "Barata",
+    p: 750,
+    l: false,
+    o: true,
+    po: false,
+    b: false
+  },
+  {
+    i: "",
+    na: "Aatrox Victorioso",
+    t: "Victoriosa",
+    p: 0,
+    l: false,
+    o: false,
+    po: false,
+    b: false
+  }
 ];
 
 export const LISTADO_ASPECTOS = [
