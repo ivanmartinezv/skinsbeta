@@ -1,11 +1,23 @@
+export let aspectos_aatrox = [
+  {
+    i: "",
+    na: "Aatrox Luna de Sangre",
+    t: "Epica",
+    p: 1350,
+    l: false,
+    o: true,
+    po: false,
+    b: false
+  },
+  { na: "Aatrox Justiciero" },
+  { na: "Aatrox Mecha" },
+  { na: "Aatrox Odisea" },
+  { na: "Aatrox Luna de Sangre Edición Prestigiosa" },
+  { na: "Aatrox Cazador Marino" },
+  { na: "Aatrox Victorioso" }
+];
+
 export const LISTADO_ASPECTOS = [
-  "Aatrox Luna de Sangre",
-  "Aatrox Justiciero",
-  "Aatrox Mecha",
-  "Aatrox Odisea",
-  "Aatrox Luna de Sangre Edición Prestigiosa",
-  "Aatrox Cazador Marino",
-  "Aatrox Victorioso",
   "Ahri Academia",
   "Ahri de Arcadia",
   "Ahri Retadora",
