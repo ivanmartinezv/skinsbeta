@@ -33,7 +33,7 @@ export class AppComponent {
     this.cargaAatrox(this.aspectos_de_aatrox);
 
     //cargar aspectos
-    this.cargaAspectos(this.listado_aspectos);
+    //this.cargaAspectos(this.listado_aspectos);
 
     //funcion de prueba
     this.nuevoAspecto(
@@ -57,8 +57,8 @@ export class AppComponent {
       let id_temp: number = i + 1;
       let nombre_aspecto_temp: string = this.listado_nombres[i];
       this.campeones[i] = new Campeon(id_temp, nombre_aspecto_temp, []);
-      /*new Aspecto("", "poto2", "", 0, false, false, false)*/
-      if (i < 3) {
+      //console.log("this.campeones[i]:", this.campeones[i]);
+      /*if (i < 3) {
         console.log(
           "id: ",
           this.campeones[i].id,
@@ -66,17 +66,19 @@ export class AppComponent {
           this.campeones[i].nombre
         );
         //console.log("aspecto: ", this.campeones[i].aspectos[0].nombre_aspecto);
-      }
+      }*/
     }
     //this.campeones[0].aspectos[0].nombre_aspecto = "coscu";
   }
 
   cargaAatrox(skinsAA: any) {
-    //recorrer los aspectos de aatrox
-    console.log("skinsAA.length: ", skinsAA.length);
-    for (let i = 0; i < skinsAA.length; i++) {
+    let id_aatrox = 1;
+    let cant_aspectos_aatrox = skinsAA.length;
+    //recorrer los N aspectos de aatrox
+    console.log("skinsAA.length: ", cant_aspectos_aatrox);
+    for (let i = 0; i < cant_aspectos_aatrox; i++) {
       let nasp = new Aspecto(
-        skinsAA[i].i,
+        ...skinsAA[i].i,
         skinsAA[i].na,
         skinsAA[i].t,
         skinsAA[i].p,
@@ -86,9 +88,9 @@ export class AppComponent {
         skinsAA[i].b,
         skinsAA[i].id
       );
-      //console.log("cada aspecto: ", nasp);
+      console.log("cada aspecto: ", nasp);
       //asignar cada atributo del aspecto al nuevo aspecto del subarray
-      this.campeones[0].aspectos[i] = nasp;
+      this.campeones[id_aatrox].aspectos[i] = nasp;
       //console.log("que muestra?: ", this.campeones[0].aspectos);
     }
   }
@@ -124,6 +126,6 @@ export class AppComponent {
     nuevosAspectos.push(nuevoAspecto);
     //se agrega el nuevo array al nuevo campeon (que ya existen)
     let nuevoCampeon: Campeon = new Campeon(-1, "Hugo", nuevosAspectos);
-    console.log("nuevoCampeon:", nuevoCampeon);
+    //console.log("nuevoCampeon:", nuevoCampeon);
   }
 }
