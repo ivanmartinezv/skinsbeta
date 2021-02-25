@@ -36,7 +36,7 @@ export class AppComponent {
     this.cargaAspectos(this.listado_aspectos);
 
     //funcion de prueba
-    this.nuevoAspecto(
+    /*this.nuevoAspecto(
       "Sin imagen",
       "Hugo Odisea",
       "Epica",
@@ -46,7 +46,7 @@ export class AppComponent {
       false,
       false,
       0
-    );
+    );*/
   }
 
   cargaID_Nombres() {
@@ -122,6 +122,7 @@ export class AppComponent {
         allSkins[i].b,
         allSkins[i].idc
       );
+      //console.log("cada aspecto: ", nasp);
       //el ID de cada campeon es correlativo a partir de 1, pero
       //la ubicacion del campeon en el array Campeones es ID-1
       //ademas, cada aspecto posee el ID del campeon pero que no es su posicion en el array Campeones
@@ -140,12 +141,12 @@ export class AppComponent {
 
       //console.log("array (se espera vacio): ", this.campeones[index_champ].aspectos);
       //añade el i-esimo Aspecto del json al array de aspectos del Campeon
-      this.campeones[index_champ].aspectos.push(nasp);
-      //console.log("cada aspecto: ", nasp);
+      this.campeones[index_champ].aspectos.push(nasp); //se evita usar el .size() para conocer el tamaño actual
     }
     //console.log("array fuera for: ", this.campeones[index_champ].aspectos);
   }
 
+  //funcion de prueba
   nuevoAspecto(i, na, t, p, l, o, po, b, idc) {
     //nuevo aspecto
     let nuevoAspecto: Aspecto = new Aspecto(i, na, t, p, l, o, po, b, idc);
@@ -153,7 +154,7 @@ export class AppComponent {
     let nuevosAspectos: Array<Aspecto> = [];
     //nuevosAspectos[0] = nuevoAspecto;
     nuevosAspectos.push(nuevoAspecto);
-    //se agrega el nuevo array al nuevo campeon (que ya existen)
+    //se agrega el nuevo array al nuevo campeon (que ya existe)
     let nuevoCampeon: Campeon = new Campeon(-1, "Hugo", nuevosAspectos);
     //console.log("nuevoCampeon:", nuevoCampeon);
   }

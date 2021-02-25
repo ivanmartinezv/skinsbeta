@@ -3,7 +3,10 @@
 		<div class="col-md-7">
 			<h2>{{titulo}}</h2>
 			<div *ngFor="let campeon of campeones; let i=index">
-				<h4> {{campeon.id}}.- {{campeon.nombre}} || Total aspectos: {{campeon.aspectos.length}}</h4>
+				<h3> {{campeon.id}}.- {{campeon.nombre}} </h3>
+				<h4>Total aspectos: {{campeon.aspectos.length}} || Obtenibles:
+					{{campeon.cont_obtenible}} || En posesión: {{campeon.cont_posesion}} || En botín:
+					{{campeon.cont_botin}}</h4>
 				<!--{{campeones[i].nombre}} - {{campeones[i].aspectos[0].nombre_aspecto}}-->
 				<table border="1">
 					<thead>
