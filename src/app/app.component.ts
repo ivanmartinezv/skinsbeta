@@ -30,10 +30,10 @@ export class AppComponent {
     this.cargaID_Nombres();
 
     //cargar datos de aatrox
-    this.cargaAatrox(this.aspectos_de_aatrox);
+    //this.cargaAatrox(this.aspectos_de_aatrox);
 
     //cargar aspectos
-    //this.cargaAspectos(this.listado_aspectos);
+    this.cargaAspectos(this.listado_aspectos);
 
     //funcion de prueba
     this.nuevoAspecto(
@@ -75,7 +75,6 @@ export class AppComponent {
         );
       }*/
     }
-    //this.campeones[0].aspectos[0].nombre_aspecto = "coscu";
   }
 
   cargaAatrox(skinsAA: any) {
@@ -85,6 +84,7 @@ export class AppComponent {
     //recorrer los N aspectos de aatrox
     console.log("skinsAA.length: ", cant_aspectos_aatrox);
     for (let i = 0; i < cant_aspectos_aatrox; i++) {
+      //asignar cada atributo del aspecto al nuevo aspecto
       let nasp = new Aspecto(
         skinsAA[i].i,
         skinsAA[i].na,
@@ -96,36 +96,54 @@ export class AppComponent {
         skinsAA[i].b,
         skinsAA[i].idc
       );
-      console.log("cada aspecto: ", nasp);
-      //asignar cada atributo del aspecto al nuevo aspecto del subarray
-      console.log("array: ", this.campeones[id_aatrox].aspectos);
+      //console.log("array: ", this.campeones[id_aatrox].aspectos);
+      //añade Aspecto al array de aspectos del i-esimo campeon
       this.campeones[id_aatrox].aspectos[i] = nasp;
-      //console.log("que muestra?: ", this.campeones[0].aspectos);
+      //console.log("cada aspecto: ", nasp);
     }
-          console.log("array fuera for: ", this.campeones[id_aatrox].aspectos);
-
+    //console.log("array fuera for: ", this.campeones[id_aatrox].aspectos);
   }
 
-  cargaAspectos(skins: any) {
-    //recorrer los aspectos de aatrox
-    console.log("skins.length: ", skins.length);
-    for (let i = 0; i < skins.length; i++) {
+  cargaAspectos(allSkins: any) {
+    //el total de aspectos en el array allSkins es el tope de iteraciones
+    let total_aspectos = allSkins.length;
+    console.log("allSkins.length: ", total_aspectos);
+    //recorrer todos los aspectos del arreglo
+    for (let i = 0; i < total_aspectos; i++) {
+      //se crea un Aspecto cuyos atributos vienen del array de aspectos
       let nasp = new Aspecto(
-        skins[i].i,
-        skins[i].na,
-        skins[i].t,
-        skins[i].p,
-        skins[i].l,
-        skins[i].o,
-        skins[i].po,
-        skins[i].b,
-        skins[i].id
+        allSkins[i].i,
+        allSkins[i].na,
+        allSkins[i].t,
+        allSkins[i].p,
+        allSkins[i].l,
+        allSkins[i].o,
+        allSkins[i].po,
+        allSkins[i].b,
+        allSkins[i].idc
       );
+      //el ID de cada campeon es correlativo a partir de 1, pero
+      //la ubicacion del campeon en el array Campeones es ID-1
+      //ademas, cada aspecto posee el ID del campeon pero que no es su posicion en el array Campeones
+      let index_champ = allSkins[i].idc - 1;
+
+      //estos IF actualizan los contadores de Obtenible, Posesion y Botin de cada aspecto del campeon
+      if (allSkins[i].o) {
+        this.campeones[index_champ].cont_obtenible++;
+      }
+      if (allSkins[i].po) {
+        this.campeones[index_champ].cont_posesion++;
+      }
+      if (allSkins[i].b) {
+        this.campeones[index_champ].cont_botin++;
+      }
+
+      //console.log("array (se espera vacio): ", this.campeones[index_champ].aspectos);
+      //añade el i-esimo Aspecto del json al array de aspectos del Campeon
+      this.campeones[index_champ].aspectos.push(nasp);
       //console.log("cada aspecto: ", nasp);
-      //asignar cada atributo del aspecto al nuevo aspecto del subarray
-      this.campeones[0].aspectos[i] = nasp;
-      //console.log("que muestra?: ", this.campeones[0].aspectos);
     }
+    //console.log("array fuera for: ", this.campeones[index_champ].aspectos);
   }
 
   nuevoAspecto(i, na, t, p, l, o, po, b, idc) {
