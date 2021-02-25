@@ -15,9 +15,8 @@ import { Campeon } from "./models/campeon.model";
 export class AppComponent {
   public titulo = "Aspectos de los campeones";
   public listado_nombres: string[] = LISTADO_CAMPEONES;
-  public listado_aspectos: string[] = LISTADO_ASPECTOS;
-
   public de_aatrox = aspectos_aatrox;
+  public listado_aspectos: string[] = LISTADO_ASPECTOS;
 
   //array de campeones
   public campeones: Array<Campeon> = [
@@ -73,20 +72,20 @@ export class AppComponent {
     //this.campeones[0].aspectos[0].nombre_aspecto = "coscu";
   }
 
-  cargaAatrox(skins: any) {
+  cargaAatrox(skinsAA: any) {
     //recorrer los aspectos de aatrox
-    console.log("skins.length: ", skins.length);
-    for (let i = 0; i < skins.length; i++) {
+    console.log("skinsAA.length: ", skinsAA.length);
+    for (let i = 0; i < skinsAA.length; i++) {
       let nasp = new Aspecto(
-        skins[i].i,
-        skins[i].na,
-        skins[i].t,
-        skins[i].p,
-        skins[i].l,
-        skins[i].o,
-        skins[i].po,
-        skins[i].b,
-        skins[i].id
+        skinsAA[i].i,
+        skinsAA[i].na,
+        skinsAA[i].t,
+        skinsAA[i].p,
+        skinsAA[i].l,
+        skinsAA[i].o,
+        skinsAA[i].po,
+        skinsAA[i].b,
+        skinsAA[i].id
       );
       //console.log("cada aspecto: ", nasp);
       //asignar cada atributo del aspecto al nuevo aspecto del subarray
