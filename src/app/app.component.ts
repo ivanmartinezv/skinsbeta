@@ -15,8 +15,8 @@ import { Campeon } from "./models/campeon.model";
 export class AppComponent {
   public titulo = "Aspectos de los campeones";
   public listado_nombres: string[] = LISTADO_CAMPEONES;
-  public de_aatrox = aspectos_aatrox;
-  public listado_aspectos: string[] = LISTADO_ASPECTOS;
+  public aspectos_de_aatrox: {} = aspectos_aatrox;
+  public listado_aspectos: {} = LISTADO_ASPECTOS;
 
   //array de campeones
   public campeones: Array<Campeon> = [
@@ -26,11 +26,11 @@ export class AppComponent {
 
   ngOnInit() {
     console.log("hola oninit");
-    //carga nombres de los campeones
-    this.cargaNombres();
+    //carga IDs y nombres de los campeones
+    this.cargaID_Nombres();
 
     //cargar datos de aatrox
-    this.cargaAatrox(this.de_aatrox);
+    this.cargaAatrox(this.aspectos_de_aatrox);
 
     //cargar aspectos
     this.cargaAspectos(this.listado_aspectos);
@@ -49,16 +49,15 @@ export class AppComponent {
     );
   }
 
-  cargaNombres() {
+  cargaID_Nombres() {
     console.log("length: ", this.listado_nombres.length);
     for (let i = 0; i < this.listado_nombres.length; i++) {
       //cada campeon del array recibe el nombre del listado y el nuevo array de Aspectos
       //console.log("name: ", this.listado[i]);
-      this.campeones[i] = new Campeon(i + 1, this.listado_nombres[i], [
-        /*
-        new Aspecto("", "poto2", "", 0, false, false, false)
-      */
-      ]);
+      let id_temp: number = i + 1;
+      let nombre_aspecto_temp: string = this.listado_nombres[i];
+      this.campeones[i] = new Campeon(id_temp, nombre_aspecto_temp, []);
+      /*new Aspecto("", "poto2", "", 0, false, false, false)*/
       if (i < 3) {
         console.log(
           "id: ",
