@@ -56,29 +56,37 @@ export class AppComponent {
       //console.log("name: ", this.listado[i]);
       let id_temp: number = i + 1;
       let nombre_aspecto_temp: string = this.listado_nombres[i];
-      this.campeones[i] = new Campeon(id_temp, nombre_aspecto_temp, []);
-      //console.log("this.campeones[i]:", this.campeones[i]);
-      /*if (i < 3) {
+      let aspectos_temp: Aspecto[] = [];
+      this.campeones[i] = new Campeon(
+        id_temp,
+        nombre_aspecto_temp,
+        aspectos_temp
+      );
+      /*if (i < 2) {
         console.log(
+          "this.campeones[" + i + "]:",
+          this.campeones[i],
           "id: ",
           this.campeones[i].id,
           "nombre: ",
-          this.campeones[i].nombre
+          this.campeones[i].nombre,
+          "aspecto: ",
+          this.campeones[i].aspectos
         );
-        //console.log("aspecto: ", this.campeones[i].aspectos[0].nombre_aspecto);
       }*/
     }
     //this.campeones[0].aspectos[0].nombre_aspecto = "coscu";
   }
 
   cargaAatrox(skinsAA: any) {
-    let id_aatrox = 1;
+    //EL ID DE AATROX ES 1 PERO SU UBICACION EN EL ARREGLO DE CAMPEONES ES 0, ADEMAS EL ID DE SU NOMBRE EN CADA ASPECTO TAMBIEN ES 1
+    let id_aatrox = skinsAA[0].idc - 1;
     let cant_aspectos_aatrox = skinsAA.length;
     //recorrer los N aspectos de aatrox
     console.log("skinsAA.length: ", cant_aspectos_aatrox);
     for (let i = 0; i < cant_aspectos_aatrox; i++) {
       let nasp = new Aspecto(
-        ...skinsAA[i].i,
+        skinsAA[i].i,
         skinsAA[i].na,
         skinsAA[i].t,
         skinsAA[i].p,
@@ -86,13 +94,16 @@ export class AppComponent {
         skinsAA[i].o,
         skinsAA[i].po,
         skinsAA[i].b,
-        skinsAA[i].id
+        skinsAA[i].idc
       );
       console.log("cada aspecto: ", nasp);
       //asignar cada atributo del aspecto al nuevo aspecto del subarray
+      console.log("array: ", this.campeones[id_aatrox].aspectos);
       this.campeones[id_aatrox].aspectos[i] = nasp;
       //console.log("que muestra?: ", this.campeones[0].aspectos);
     }
+          console.log("array fuera for: ", this.campeones[id_aatrox].aspectos);
+
   }
 
   cargaAspectos(skins: any) {

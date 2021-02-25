@@ -35,7 +35,7 @@ export class Aspecto {
 export class Campeon {
   id: number;
   nombre: string;
-  aspectos: Array<Aspecto>;
+  aspectos: Aspecto[];
 
   constructor(idc: number, n: string, a: Array<Aspecto>) {
     this.id = idc;
