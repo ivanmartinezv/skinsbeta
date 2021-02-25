@@ -16,12 +16,17 @@ export class AppComponent {
   public titulo = "Aspectos de los campeones";
   public listado_nombres: string[] = LISTADO_CAMPEONES;
   public aspectos_de_aatrox: {} = aspectos_aatrox;
-  public listado_aspectos: {} = LISTADO_ASPECTOS;
-
+  public listado_aspectos = LISTADO_ASPECTOS;
   //array de campeones
   public campeones: Array<Campeon> = [
     /*campeones[0],campeones[1],...,campeones[N]*/
   ];
+
+  //CONTADORES TOTALES
+  public total_aspectos: number = this.listado_aspectos.length;
+  public total_obtenibles: number = 0;
+  public total_posesion: number = 0;
+  public total_botin: number = 0;
 
   ngOnInit() {
     console.log("hola oninit");
@@ -130,12 +135,15 @@ export class AppComponent {
       //estos IF actualizan los contadores de Obtenible, Posesion y Botin de cada aspecto del campeon
       if (allSkins[i].o) {
         this.campeones[index_champ].cont_obtenible++;
+        this.total_obtenibles++;
       }
       if (allSkins[i].po) {
         this.campeones[index_champ].cont_posesion++;
+        this.total_posesion++;
       }
       if (allSkins[i].b) {
         this.campeones[index_champ].cont_botin++;
+        this.total_botin++;
       }
 
       //console.log("array (se espera vacio): ", this.campeones[index_champ].aspectos);

@@ -1,4 +1,4 @@
-export let aspectos_aatrox = [
+export const aspectos_aatrox = [
   {
     i: "",
     na: "Aatrox Luna de Sangre",
@@ -79,7 +79,7 @@ export let aspectos_aatrox = [
 ];
 
 //generalizacion de aspectos_aatrox para todos los aspectos
-export let LISTADO_ASPECTOS = [
+export const LISTADO_ASPECTOS = [
   {
     i: "",
     na: "Aatrox Luna de Sangre",
