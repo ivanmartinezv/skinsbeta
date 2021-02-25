@@ -20,7 +20,6 @@ export class AppComponent {
 
   //array de campeones
   public campeones: Array<Campeon> = [
-    /*{ id: 1, nombre: "Aatrox", aspectos: new Array<Aspecto>() }*/
     /*campeones[0],campeones[1],...,campeones[N]*/
   ];
 

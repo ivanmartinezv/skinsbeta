@@ -83,10 +83,10 @@ export let LISTADO_ASPECTOS = [
   {
     i: "",
     na: "Aatrox Luna de Sangre",
-    t: "",
-    p: 0,
+    t: "Epica",
+    p: 1350,
     l: false,
-    o: false,
+    o: true,
     po: false,
     b: false,
     idc: 1
@@ -94,11 +94,11 @@ export let LISTADO_ASPECTOS = [
   {
     i: "",
     na: "Aatrox Justiciero",
-    t: "",
-    p: 0,
+    t: "Barata",
+    p: 975,
     l: false,
-    o: false,
-    po: false,
+    o: true,
+    po: true,
     b: false,
     idc: 1
   },
