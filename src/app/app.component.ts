@@ -4,7 +4,7 @@ import {
   LISTADO_CAMPEONES,
   LISTADO_ASPECTOS
 } from "./models/listado.global";
-import { Aspecto } from "./models/campeon.model";
+import { Aspecto } from "./models/aspecto.model";
 import { Campeon } from "./models/campeon.model";
 
 @Component({
