@@ -33,9 +33,9 @@ export class ListaCampeonesComponent implements OnInit {
 
   constructor(private _campeonService: CampeonService) {
     //se invoca al servicio para que su funcion lista() traiga los datos de firebase
-    this._campeonService.listaItem().subscribe(item => {
-      this.items = item;
-      console.log(this.items);
+    this._campeonService.listaCampeones().subscribe(campeon => {
+      this.campeones = campeon;
+      console.log("this.campeones: ",this.campeones);
     });
   }
 

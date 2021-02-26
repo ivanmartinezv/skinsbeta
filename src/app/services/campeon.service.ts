@@ -17,6 +17,10 @@ import { AngularFirestoreDocument } from "@angular/fire/firestore";
 export interface Item {
   name: string;
 }
+export interface Campeon {
+  nombre: string;
+}
+//import { Campeon } from "../models/campeon.model";
 
 @Injectable({
   providedIn: "root"
@@ -27,14 +31,21 @@ export class CampeonService {
   //variables
   private itemsCollection: AngularFirestoreCollection<Item>;
   items: Observable<Item[]>;
-
   //para eliminar
   private itemDoc: AngularFirestoreDocument<Item>;
 
-  //
+  //variables para campeon
+  private campeonesCollection: AngularFirestoreCollection<Item>;
+  campeones: Observable<Item[]>;
+  //para eliminar
+  private campeonDoc: AngularFirestoreDocument<Item>;
+
   constructor(private afs: AngularFirestore) {
     //variable que recibe los items de firestore
     this.itemsCollection = afs.collection<Item>("items");
+
+    //variable que recibe los campeones de firestore
+    this.campeonesCollection = afs.collection<Campeon>("campeones");
 
     //this.items = this.itemsCollection.valueChanges();
 
@@ -59,10 +70,23 @@ export class CampeonService {
         })
       )
     );
+
+    //ASIGNACION PARA CAMPEONES
+    /*this.items = this.itemsCollection.snapshotChanges().pipe(
+      map(actions =>
+        actions.map(a => {
+          console.log("dentro de snapshotChanges");
+          const data = a.payload.doc.data() as Item;
+          const id = a.payload.doc.id; //a.payload.doc['id']
+          return { id, ...data };
+        })
+      )
+    );*/
   }
 
   //funcion retorna todos los items capturados
-  listaItem() {
+  listaCampeones() {
+    //datos precargados en el constructor
     return this.items;
   }
 
