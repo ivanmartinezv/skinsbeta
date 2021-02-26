@@ -1,15 +1,13 @@
-import { Aspecto } from "./aspecto.model";
-
 export class Campeon {
   id: number;
   nombre: string;
-  aspectos: Aspecto[];
+  aspectos: [];
   cont_obtenible: number;
   cont_posesion: number; //cuantas tengo
   //cuantas no tengo se puede calcular (total-tengo)
   cont_botin: number; //cuantas hay en botin
 
-  constructor(idc: number, n: string, a: Aspecto[]) {
+  constructor(idc: number, n: string, a: []) {
     this.id = idc;
     this.nombre = n;
     this.aspectos = a;

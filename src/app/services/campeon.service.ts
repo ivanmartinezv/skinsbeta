@@ -1,6 +1,5 @@
-//Generar el servicio
-//tipear en la consola dentro del proyecto
-//ng g s services/conexion
+//Generar el servicio desde la consola (dentro del proyecto)
+//ng g s services/campeon
 
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
