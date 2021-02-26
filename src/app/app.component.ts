@@ -145,7 +145,6 @@ export class AppComponent {
         this.campeones[index_champ].cont_botin++;
         this.total_botin++;
       }
-
       //console.log("array (se espera vacio): ", this.campeones[index_champ].aspectos);
       //añade el i-esimo Aspecto del json al array de aspectos del Campeon
       this.campeones[index_champ].aspectos.push(nasp); //se evita usar el .size() para conocer el tamaño actual

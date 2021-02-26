@@ -41,7 +41,7 @@ export class Campeon {
   //cuantas no tengo se puede calcular (total-tengo)
   cont_botin: number; //cuantas hay en botin
 
-  constructor(idc: number, n: string, a: Array<Aspecto>) {
+  constructor(idc: number, n: string, a: Aspecto[]) {
     this.id = idc;
     this.nombre = n;
     this.aspectos = a;

@@ -1,4 +1,4 @@
-export const aspectos_aatrox = [
+export let aspectos_aatrox = [
   {
     i: "",
     na: "Aatrox Luna de Sangre",
