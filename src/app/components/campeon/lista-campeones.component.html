@@ -1,36 +1,49 @@
-<div class="alert alert-warning" role="alert" *ngFor="let item of items">
-	{{item.name}} - {{item.id}}< <div class="float-right" (click)="eliminar(item)">
-		<i class="far fa-trash-alt"></i>
-</div>
-
-<div class="float-right" (click)="editar(item)" data-toggle="modal" data-target="#exampleModal">
-	<i class="fas fa-pencil-alt"></i>
-</div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-	aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Editar: {{editarItem.name}}</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-			</div>
-			<div class="modal-body">
-				<form (ngSubmit)="agregarItemEditado()">
-					<input type="text" placeholder="Ingrese nombre"
-			name="name" class="form-control"
-			[(ngModel)]="editarItem.name">
-					<button class="btn btn-warning mt-3" type="submit">Editar</button>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<!--button type="button" class="btn btn-primary">Guardar</button-->
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-			</div>
-		</div>
-	</div>
+<div class="grd">
+  <div class="grd-row">
+    <div class="grd-row-col-2">
+      <h3>Productos</h3>
+      <form
+        (ngSubmit)="newProducto(newProductoForm.value)"
+        [formGroup]="newProductoForm"
+      >
+        <input type="hidden" formControlName="id" />
+        <label for="nombre">Nombre del producto</label>
+        <input type="text" formControlName="nombre" />
+        <label for="url_img">Imagen del producto</label>
+        <input type="url" formControlName="url" />
+        <input
+          type="submit"
+          class="btn--blue btn--add"
+          [disabled]="!newProductoForm.valid"
+          value="Agregar producto"
+        />
+      </form>
+    </div>
+    <div class="grd-row-col-4">
+      <div class="productos_container">
+        <div class="media" *ngFor="let producto of productos">
+          <div class="media-figure">
+            <img [src]="producto.data.url" />
+          </div>
+          <div class="media-body">
+            <p>{{producto.data.nombre}}</p>
+            <div class="btn--group">
+              <button
+                class="btn--green btn--s btn1"
+                (click)="editProducto(producto.id)"
+              >
+                Editar
+              </button>
+              <button
+                class="btn--red btn--s btn2"
+                (click)="deleteProducto(producto.id)"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

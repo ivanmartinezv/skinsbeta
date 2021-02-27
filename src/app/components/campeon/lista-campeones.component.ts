@@ -1,39 +1,23 @@
-//ng g c components/lampeon
 import { Component, OnInit } from "@angular/core";
+//formularios
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+//modelos
 import { Campeon } from "../../models/campeon.model";
+//servicios
 import { CampeonService } from "../../services/campeon.service";
 
-//interfaz de un string (sustituye clase.ts)
-export interface Item {
-  name: string;
-}
-
-export interface Campeon {
-  nombre: string;
-}
-
 @Component({
-  selector: "lista-campeones",
+  selector: "app-campeon",
   templateUrl: "./lista-campeones.component.html",
   styleUrls: ["./lista-campeones.component.css"]
 })
-//COMPONENTE CREADO PARA IMPLEMENTAR UN MODELO NO RELACIONAL DE DATOS
-//https://stackoverflow.com/questions/56081903/ionic-firestore-cannot-find-module-angular-fire-firestore
-export class ListaCampeonesComponent implements OnInit {
-  //lista tipo any
-  items: any;
-  //item auxiliar para editar
-  editarItem: any = {
-    name: ""
-  };
 
-  //lista campeones
-  campeones: any;
-  //campeon auxiliar para editar
-  editarCampeon: any = {
-    //atributos
-    nombre: ""
-  };
+//COMPONENTE CREADO PARA IMPLEMENTAR UN MODELO NO RELACIONAL DE DATOS
+export class ListaCampeonesComponent implements OnInit {
+  //enviar datos estaticos a Firebase
+  public enviarDatos: boolean = false;
+
+  public c: Campeon;
 
   public titulo = "Listado de Campeones";
   //hay que importar la clase Campeon de "./models/campeon.model";

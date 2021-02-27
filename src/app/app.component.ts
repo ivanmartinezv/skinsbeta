@@ -4,8 +4,6 @@ import {
   LISTADO_CAMPEONES,
   LISTADO_ASPECTOS
 } from "./models/listado.global";
-import { Campeon } from "./models/campeon.model";
-import { Aspecto } from "./models/aspecto.model";
 
 @Component({
   selector: "my-app",
@@ -16,7 +14,7 @@ export class AppComponent {
   public titulo = "Aspectos de los campeones";
   public listado_nombres: string[] = LISTADO_CAMPEONES;
   public aspectos_de_aatrox: {} = aspectos_aatrox;
-  public listado_aspectos: {} = LISTADO_ASPECTOS;
+  public listado_aspectos = LISTADO_ASPECTOS;
   //array de campeones
   public campeones: Array<Campeon> = [
     /*campeones[0],campeones[1],...,campeones[N]*/
