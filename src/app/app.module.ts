@@ -5,20 +5,31 @@ import { AppComponent } from "./app.component";
 //importar modulo de formularios
 import { FormsModule } from "@angular/forms";
 //primeras 2
-import { AngularFireModule } from "angularfire2";
+//import { AngularFireModule } from "angularfire2";
+import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
 //siguientes 3
-import { AngularFirestoreModule } from "angularfire2/firestore";
-import { AngularFireStorageModule } from "angularfire2/storage";
-import { AngularFireAuthModule } from "angularfire2/auth";
+//import { AngularFirestoreModule } from "angularfire2/firestore";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+//import { AngularFireStorageModule } from "angularfire2/storage";
+import { AngularFireStorageModule } from "@angular/fire/storage";
+//import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+//import { AngularFireAuth } from '@angular/fire/auth';//no se usa
+//import { FirebaseService } from "./service/firebase.service";//no se usa
+
 //servicios para BDD
 import { CampeonService } from "./services/campeon.service";
 //componentes (importados a partir de la ejecucion del comando ng c c components/XXX)
-import { ListaComponent } from "./components/lista/lista.component";
-import { ListaAddComponent } from "./components/lista-add/lista-add.component";
+import { ListaCampeonesComponent } from "./components/campeon/lista-campeones.component";
+import { ListaCampeonesAddComponent } from "./components/campeon/listacampeonadd.component";
 
 @NgModule({
-  declarations: [AppComponent, ListaComponent, ListaAddComponent],
+  declarations: [
+    AppComponent,
+    ListaCampeonesComponent,
+    ListaCampeonesAddComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule /*formularios*/,
