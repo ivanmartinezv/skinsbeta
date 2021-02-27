@@ -4,17 +4,19 @@ import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 //importar modulo de formularios
 import { FormsModule } from "@angular/forms";
-//primeras 2
-//import { AngularFireModule } from "angularfire2";
-import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
-//siguientes 3
-//import { AngularFirestoreModule } from "angularfire2/firestore";
+
+import { AngularFireModule } from "angularfire2";
+import { AngularFirestoreModule } from "angularfire2/firestore";
+import { AngularFireStorageModule } from "angularfire2/storage";
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireDatabaseModule } from "angularfire2/database";
+
+/*import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
-//import { AngularFireStorageModule } from "angularfire2/storage";
 import { AngularFireStorageModule } from "@angular/fire/storage";
-//import { AngularFireAuthModule } from "angularfire2/auth";
-import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireAuthModule } from "@angular/fire/auth";*/
+
 //import { AngularFireAuth } from '@angular/fire/auth';//no se usa
 //import { FirebaseService } from "./service/firebase.service";//no se usa
 
