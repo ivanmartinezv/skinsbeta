@@ -25,7 +25,7 @@ import { CampeonService } from "./services/campeon.service";
     BrowserModule,
     FormsModule /*formularios*/,
     //AppRoutingModule, //no está este
-    AngularFireModule.initializeApp(environment.firebase
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
     //servicios

@@ -6,17 +6,18 @@ import { Campeon } from "../../models/campeon.model";
 //servicios
 import { CampeonService } from "../../services/campeon.service";
 
-import { Aspecto } from "../../models/aspecto.model";
+//import { Aspecto } from "../../models/aspecto.model";
 import {
   aspectos_aatrox,
   LISTADO_CAMPEONES,
   LISTADO_ASPECTOS
 } from "../../models/listado.global";
+import { Aspecto } from "../../models/aspecto.model";
 
 @Component({
   selector: "app-campeon",
-  templateUrl: "./lista-campeones.component.html",
-  styleUrls: ["./lista-campeones.component.css"]
+  templateUrl: "./campeon.component.html",
+  styleUrls: ["./campeon.component.css"]
 })
 
 //COMPONENTE CREADO PARA IMPLEMENTAR UN MODELO NO RELACIONAL DE DATOS
@@ -110,7 +111,7 @@ export class CampeonComponent implements OnInit {
       //console.log("name: ", this.listado[i]);
       let id_temp: number = i + 1;
       let nombre_aspecto_temp: string = this.listado_nombres[i];
-      let aspectos_temp: Aspecto[] = [];
+      let aspectos_temp: [] = [];
       this.campeones[i] = new Campeon(
         id_temp,
         nombre_aspecto_temp,
@@ -139,8 +140,8 @@ export class CampeonComponent implements OnInit {
     console.log("skinsAA.length: ", cant_aspectos_aatrox);
     for (let i = 0; i < cant_aspectos_aatrox; i++) {
       //asignar cada atributo del aspecto al nuevo aspecto
-      let nasp = new Aspecto(
-        skinsAA[i].i,
+      let nasp = new Aspecto();
+      /*skinsAA[i].i,
         skinsAA[i].na,
         skinsAA[i].t,
         skinsAA[i].p,
@@ -148,8 +149,7 @@ export class CampeonComponent implements OnInit {
         skinsAA[i].o,
         skinsAA[i].po,
         skinsAA[i].b,
-        skinsAA[i].idc
-      );
+        skinsAA[i].idc*/
       //console.log("array: ", this.campeones[id_aatrox].aspectos);
       //añade Aspecto al array de aspectos del i-esimo campeon
       this.campeones[id_aatrox].aspectos[i] = nasp;
@@ -165,8 +165,8 @@ export class CampeonComponent implements OnInit {
     //recorrer todos los aspectos del arreglo
     for (let i = 0; i < total_aspectos; i++) {
       //se crea un Aspecto cuyos atributos vienen del array de aspectos
-      let nasp = new Aspecto(
-        allSkins[i].i,
+      let nasp = new Aspecto();
+      /*allSkins[i].i,
         allSkins[i].na,
         allSkins[i].t,
         allSkins[i].p,
@@ -174,8 +174,7 @@ export class CampeonComponent implements OnInit {
         allSkins[i].o,
         allSkins[i].po,
         allSkins[i].b,
-        allSkins[i].idc
-      );
+        allSkins[i].idc*/
       //console.log("cada aspecto: ", nasp);
       //el ID de cada campeon es correlativo a partir de 1, pero
       //la ubicacion del campeon en el array Campeones es ID-1
@@ -205,7 +204,7 @@ export class CampeonComponent implements OnInit {
   //funcion de prueba
   nuevoAspecto(i, na, t, p, l, o, po, b, idc) {
     //nuevo aspecto
-    let nuevoAspecto: Aspecto = new Aspecto(i, na, t, p, l, o, po, b, idc);
+    let nuevoAspecto: Aspecto = new Aspecto(/*i, na, t, p, l, o, po, b, idc*/);
     //se añade al array de aspectos (que ya existe para cada campeon)
     let nuevosAspectos: Array<Aspecto> = [];
     //nuevosAspectos[0] = nuevoAspecto;

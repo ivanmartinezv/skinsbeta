@@ -9,7 +9,8 @@ export class Aspecto {
   botin: boolean;
   id_campeon: number;
 
-  constructor(
+  constructor() {}
+  /*constructor(
     i: string,
     na: string,
     t: string,
@@ -29,5 +30,5 @@ export class Aspecto {
     this.posesion = po;
     this.botin = b;
     this.id_campeon = idc;
-  }
+  }*/
 }
