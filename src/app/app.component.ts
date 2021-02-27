@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { Aspecto } from "./models/aspecto.model";
+import { Campeon } from "./models/campeon.model";
 import {
   aspectos_aatrox,
   LISTADO_CAMPEONES,

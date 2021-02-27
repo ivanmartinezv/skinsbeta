@@ -14,29 +14,51 @@ import { CampeonService } from "../../services/campeon.service";
 
 //COMPONENTE CREADO PARA IMPLEMENTAR UN MODELO NO RELACIONAL DE DATOS
 export class ListaCampeonesComponent implements OnInit {
-  //enviar datos estaticos a Firebase
-  public enviarDatos: boolean = false;
-
-  public c: Campeon;
-
   public titulo = "Listado de Campeones";
   //hay que importar la clase Campeon de "./models/campeon.model";
+  //enviar o borrar datos estaticos a Firebase
+  public enviarDatos: boolean = false;
+  public borrarDatos: boolean = false;
   //hay que leer los campeones de firebase --> LISTADO_CAMPEONES
   public listado_nombres: string[] = []; //LISTADO_CAMPEONES;
   //array de campeones
   public allCampeones: Array<Campeon> = [];
 
-  //el constructor es el que invoca al servicio para cargar datos de BDD
+  //(I) Array que contendrá los datos de firebase
+  public campeones: any[] = []; //no se usa Campeon[]
+  //(II) atributos para editar productos
+  public documentId = null;
+
+  /*La app maneja 2 estados, currentStatus = 0 -> la app se encuentra en modo de creación?? de documentos, ó currentStatus = 1 -> la app se encuentra en modo de edición?? de documentos. */
+  public currentStatus = 1;
+  public newCampeonForm = new FormGroup({
+    nombre: new FormControl("", Validators.required),
+    url: new FormControl("", Validators.required),
+    id: new FormControl("")
+    //al enviar los datos del formulario, hay que agregar los CONTADORES
+  });
+
   constructor(private _campeonService: CampeonService) {
-    //se invoca al servicio para que su funcion lista() traiga los datos de firebase
-    this._campeonService.listaCampeones().subscribe(campeon => {
-      this.campeones = campeon;
-      console.log("this.campeones: ", this.campeones);
+    //funcion con los datos que trae el servicio
+    this.newCampeonForm.setValue({
+      id: "",
+      nombre: "",
+      url: ""
     });
   }
 
-  //se podria decir que el ngOnInit carga datos estaticos
-  ngOnInit(): void {}
+  ngOnInit() {
+    //el ngOnInit es el que invoca al servicio para LEER datos de BDD
+    this._campeonService.getCampeones().subscribe(campeonesSnapshot => {
+      this.campeones = [];
+      campeonesSnapshot.forEach((campeonData: any) => {
+        this.campeones.push({
+          id: campeonData.payload.doc.id,
+          data: campeonData.payload.doc.data()
+        });
+      });
+    });
+  }
 
   eliminar(item: Item) {
     this._campeonService.eliminarItem(item);
