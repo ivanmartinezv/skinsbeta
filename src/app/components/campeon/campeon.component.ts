@@ -25,10 +25,11 @@ export class CampeonComponent implements OnInit {
   public titulo = "Listado de Campeones";
   //hay que importar la clase Campeon de "./models/campeon.model";
   //enviar o borrar datos estaticos (LISTADO_CAMPEONES) a Firebase
-  public enviarDatos: boolean = false;
+  public enviarDatos: boolean = true;
   public borrarDatos: boolean = false;
   //hay que leer los campeones de firebase --> LISTADO_CAMPEONES
-  public listado_nombres: any = []; //LISTADO_CAMPEONES;
+  public listado_nombres: any = LISTADO_CAMPEONES;
+  public total_nombres: number = this.listado_nombres.length;
   //array de campeones
   public allCampeones: any = [];
 
@@ -67,6 +68,10 @@ export class CampeonComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("listado_nombres: ", this.listado_nombres.length);
+    if (this.enviarDatos) {
+      this._campeonService.enviarDatos(this.listado_nombres);
+    }
     console.log("hola oninit");
     //el ngOnInit es el que invoca al servicio para LEER datos de BDD
     this._campeonService.getCampeones().subscribe(campeonesSnapshot => {
@@ -78,6 +83,80 @@ export class CampeonComponent implements OnInit {
         });
       });
     });
+  }
+
+  formatearBDD() {
+    console.log("formateando BDD");
+  }
+
+  public newProducto(form, documentId = this.documentId) {
+    console.log(`Status: ${this.currentStatus}`);
+    if (this.currentStatus == 1) {
+      //CREACION DE DOCUMENTOS
+      let data = {
+        nombre: form.nombre,
+        url: form.url
+      };
+      this._productoService.createProducto(data).then(
+        () => {
+          console.log("Documento creado exitósamente!");
+          this.newProductoForm.setValue({
+            nombre: "",
+            url: "",
+            id: ""
+          });
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    } else {
+      //EDICION DE DOCUMENTOS
+      let data = {
+        nombre: form.nombre,
+        url: form.url
+      };
+      this._productoService.updateProducto(documentId, data).then(
+        () => {
+          this.currentStatus = 1;
+          this.newProductoForm.setValue({
+            nombre: "",
+            url: "",
+            id: ""
+          });
+          console.log("Documento editado exitósamente");
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  public editProducto(documentId) {
+    let editSubscribe = this._productoService
+      .getProducto(documentId)
+      .subscribe(producto => {
+        this.currentStatus = 2;
+        this.documentId = documentId;
+        this.newProductoForm.setValue({
+          id: documentId,
+          nombre: producto.payload.data()["nombre"],
+          url: producto.payload.data()["url"]
+        });
+        editSubscribe.unsubscribe();
+      });
+  }
+
+  public deleteProducto(documentId) {
+    this._productoService.deleteProducto(documentId).then(
+      () => {
+        console.log("Documento eliminado!");
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
   ngOnInit_antiguo() {

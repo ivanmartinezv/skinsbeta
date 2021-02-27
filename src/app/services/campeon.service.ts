@@ -12,6 +12,19 @@ export class CampeonService {
     //vacio
   }
 
+  //A. Enviar nombres de campeones a firebase
+  public enviarDatos(nombres_campeones: any) {
+    let allNombres = nombres_campeones; //ACA VOY, NO SE SI
+    for (let i = 0; i < allNombres.length; i++) {
+      console.log(i + 1, ": ", allNombres[i]);
+      let data_temp: { nombre: string; url: string } = {
+        nombre: allNombres[i],
+        url: ""
+      };
+      this.afs.collection("campeones_temp").add(data_temp);
+    }
+  }
+
   //(1) Crea un nuevo campeon
   public createCampeon(data: { nombre: string; url: string }) {
     return this.afs.collection("campeones").add(data);
